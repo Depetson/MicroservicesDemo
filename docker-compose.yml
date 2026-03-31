@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: micro-rabbitmq
+    hostname: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  redis:
+    image: redis:7
+    container_name: micro-redis
+    ports:
+      - "6379:6379"
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: micro-sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "StrongPass123A"
+    ports:
+      - "11433:1433"
